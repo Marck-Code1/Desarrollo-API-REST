@@ -7,6 +7,7 @@ const sodas = [
   { nombre: "Manzanita", tipo: "De-Sabor" },
   { nombre: "Fresca", tipo: "De-Sabor" },
   { nombre: "Mirinda", tipo: "De-Sabor" },
+  { nombre: "Doctor Pepper", tipo: "De-Sabor" },
 ];
 
 router.get("/sodas", (req, res) => {

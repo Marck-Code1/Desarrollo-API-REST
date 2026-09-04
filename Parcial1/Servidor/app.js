@@ -12,6 +12,10 @@ app.use(morgan("dev"));
 
 /*    Agregar AUTENTICACION al servidor con express basic-auth  */
 
+
+
+/*    Agregar que el servidor reciba archivos en una carpeta     */
+
 /*
 const verificarJson = (req,res,next) => {
   if(req.headers['content-type'] !== 'application/json'){
@@ -23,6 +27,9 @@ const verificarJson = (req,res,next) => {
 */
 
 app.use("/", /*verificarJson,*/ sodasRouter);
+
+
+
 
 app.use(function (req, res, next) {
   res.status(404).send("Recurso no encontrado");

@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require("path");
 const app = express();
 const PORT = process.env.PORT || "3000";
 
@@ -10,11 +11,9 @@ app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-/*    Agregar AUTENTICACION al servidor con express basic-auth  */
 
-
-
-/*    Agregar que el servidor reciba archivos en una carpeta     */
+app.set('view engine','pug')
+app.set('views', path.join(__dirname, 'views'));
 
 /*
 const verificarJson = (req,res,next) => {
@@ -28,7 +27,9 @@ const verificarJson = (req,res,next) => {
 
 app.use("/", /*verificarJson,*/ sodasRouter);
 
-
+app.get('/hola', (req, res) => {
+  res.render('index', { title: 'Hey', message: 'Hello there!' });
+});
 
 
 app.use(function (req, res, next) {
@@ -42,3 +43,4 @@ app.use(function (err, req, res, next) {
 app.listen(PORT, () => {
   console.log("App escuchando en el puerto 3000!");
 });
+

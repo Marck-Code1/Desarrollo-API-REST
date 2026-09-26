@@ -14,18 +14,9 @@ app.use(morgan("dev"));
 
 app.set('view engine','pug')
 app.set('views', path.join(__dirname, 'views'));
-
-/*
-const verificarJson = (req,res,next) => {
-  if(req.headers['content-type'] !== 'application/json'){
-    res.status(400).send('El server solo acepta JSON')
-  } else {
-    next();
-  }
-}
-*/
-
-app.use("/", /*verificarJson,*/ sodasRouter);
+ /*  Agregar log de errores y funcion manejadora de errores dentro de middleware   */
+ /* Tambien debe de haber documentacion sobre el manejo de errores y el uso de la API */
+app.use("/", sodasRouter);
 
 app.get('/hola', (req, res) => {
   res.render('index', { title: 'Hey', message: 'Hello there!' });

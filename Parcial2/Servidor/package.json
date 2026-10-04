@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "api-key-auth": "^0.2.3",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "express-basic-auth": "^1.2.1",

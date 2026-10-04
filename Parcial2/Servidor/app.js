@@ -3,7 +3,10 @@ const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
 const app = express();
-const basicAuth = require('express-basic-auth')
+import { apiKeyAuth } from '@vpriem/express-api-key-auth';
+
+express().use(apiKeyAuth(/^API_KEY_/));
+//const basicAuth = require('express-basic-auth')
 const PORT = process.env.PORT || "3000";
 
 const sodasRouter = require("./routes/sodaRouter");
@@ -11,10 +14,10 @@ const sodasRouter = require("./routes/sodaRouter");
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
-app.use(basicAuth({
+/*app.use(basicAuth({
     users: { 'marco': '123' }
 }))
-
+*/
 app.set('view engine','pug')
 app.set('views', path.join(__dirname, 'views'));
  /*  Agregar log de errores y funcion manejadora de errores dentro de middleware   */

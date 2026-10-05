@@ -25,6 +25,8 @@ Una **API Key** es una clave que una aplicación utiliza para identificarse al h
 
 Al igual que bearer el servidor asigna la llave, pero le da una duración larga, para acceso prolongado hasta que se revoque.
 
+Tiene su propio header `x-api-key`.
+
 ## JSON Web Token (JWT)
 
 **JWT (JSON Web Token)** es un formato de token que permite guardar información dentro del mismo token.

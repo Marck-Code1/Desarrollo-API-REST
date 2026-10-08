@@ -1,0 +1,13 @@
+### Iniciar sesion para obtener el Json Web Token!!!!!! (Esta request se hace primero)
+# @name login
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "123"
+}
+
+### Esta request accede a la API con el Json Web Token recibido!!!
+GET http://localhost:3000/test
+Authorization: Bearer {{login.response.body.$.token}}

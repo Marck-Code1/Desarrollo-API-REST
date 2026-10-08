@@ -1,0 +1,16 @@
+### Todas las sodas
+GET http://localhost:3000/sodas
+Accept: application/json
+
+### Sodas normales
+GET http://localhost:3000/sodas?tipo=normal
+Accept: application/json
+
+### Sodas de sabor
+GET http://localhost:3000/sodas?tipo=de-sabor
+Accept: application/json
+
+
+### APiKey
+GET http://localhost:3000/test
+X-Api-Key: 123

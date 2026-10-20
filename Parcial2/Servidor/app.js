@@ -2,14 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const path = require("path");
+const fs = require("fs");
+const https = require("https");
 const app = express();
-import { apiKeyAuth } from '@vpriem/express-api-key-auth';
-
-express().use(apiKeyAuth(/^API_KEY_/));
 //const basicAuth = require('express-basic-auth')
 const PORT = process.env.PORT || "3000";
 
 const sodasRouter = require("./routes/sodaRouter");
+
+const opciones = {
+  key: fs.readFileSync(path.join(__dirname, "ssl/key.pem")),
+  cert: fs.readFileSync(path.join(__dirname, "ssl/cert.pem")),
+};
+
 
 app.use(express.json());
 app.use(cors());
@@ -43,7 +48,7 @@ app.use(function (err, req, res, next) {
   res.status(500).send("Error de servidor");
 });
 
-app.listen(PORT, () => {
-  console.log("App escuchando en el puerto 3000!");
+https.createServer(opciones, app).listen(PORT, () => {
+  console.log(`App escuchando en https://localhost:${PORT}`);
 });
 

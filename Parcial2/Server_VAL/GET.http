@@ -1,0 +1,60 @@
+@baseUrl = http://localhost:3001
+
+### Información de la API
+GET {{baseUrl}}/
+
+### Todas las sodas
+GET {{baseUrl}}/sodas
+
+### Filtrar por tipo (también acepta Normal o De-Sabor)
+GET {{baseUrl}}/sodas?tipo=de-sabor
+
+### Buscar por id
+GET {{baseUrl}}/sodas/1
+
+### Crear una soda (en una instancia recién iniciada devuelve id 7)
+POST {{baseUrl}}/sodas
+Content-Type: application/json
+
+{
+  "nombre": "Sprite",
+  "tipo": "de-sabor"
+}
+
+### Reemplazar todos los campos
+PUT {{baseUrl}}/sodas/7
+Content-Type: application/json
+
+{
+  "nombre": "Sprite Zero",
+  "tipo": "de-sabor"
+}
+
+### Modificar solo un campo
+PATCH {{baseUrl}}/sodas/7
+Content-Type: application/json
+
+{
+  "nombre": "Sprite Limón"
+}
+
+### Eliminar
+DELETE {{baseUrl}}/sodas/7
+
+### Error 400: nombre vacío y tipo inválido
+POST {{baseUrl}}/sodas
+Content-Type: application/json
+
+{
+  "nombre": " ",
+  "tipo": "otro"
+}
+
+### Error 400: filtro inválido
+GET {{baseUrl}}/sodas?tipo=otro
+
+### Error 400: id inválido
+GET {{baseUrl}}/sodas/abc
+
+### Error 404: soda inexistente
+GET {{baseUrl}}/sodas/999
